@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neon Coast Cover Studio - GTA-style multi-panel cover maker</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<header class="brand-bar">
+  <h1 id="appTitle">Neon Coast <span>Cover Studio</span></h1>
+  <p id="appTagline">Your photo + a caption, turned into a multi-panel poster cover with a Vice City sunset grade. Everything runs offline, photos never leave this machine.</p>
+</header>
+<main class="studio-layout">
+  <section class="controls-panel" aria-label="Cover controls">
+    <h2>1. Photos</h2>
+    <label class="upload-label">Add up to 4 of your photos
+      <input id="photoUpload" type="file" accept="image/*" multiple>
+    </label>
+    <button id="loadSamplesButton" type="button">Load the two sample photos</button>
+    <div id="photoStrip" class="photo-strip" aria-label="Photos ready to place"></div>
+    <p id="panelLabel" class="panel-label">Panel 1 selected</p>
+    <label>Zoom of the selected panel
+      <input id="zoomRange" type="range" min="100" max="260" value="100">
+    </label>
+
+    <h2>2. Poster</h2>
+    <label>Panel layout
+      <select id="layoutSelect"></select>
+    </label>
+    <label>Colour grade
+      <select id="gradeSelect"></select>
+    </label>
+    <label>Cover title
+      <input id="captionInput" type="text" maxlength="34" value="NEON COAST">
+    </label>
+    <label>Script subtitle
+      <input id="subInput" type="text" maxlength="40" value="Vice Nights">
+    </label>
+    <label>Heat meter: <span id="starsValue">5</span> stars
+      <input id="starsRange" type="range" min="0" max="5" step="1" value="5">
+    </label>
+    <div class="toggle-grid">
+      <label><input id="badgeToggle" type="checkbox" checked> Badge ribbon</label>
+      <label><input id="halftoneToggle" type="checkbox" checked> Halftone title block</label>
+      <label><input id="grainToggle" type="checkbox" checked> Film grain</label>
+      <label><input id="vignetteToggle" type="checkbox" checked> Vignette</label>
+    </div>
+
+    <h2>3. Export</h2>
+    <div id="exportRow" class="export-row"></div>
+    <div class="history-row">
+      <button id="undoButton" type="button">Undo</button>
+      <button id="redoButton" type="button">Redo</button>
+    </div>
+    <p id="statusLine" role="status">Samples loaded - pick a layout and make it yours.</p>
+  </section>
+  <section class="preview-panel" aria-label="Live cover preview">
+    <canvas id="coverCanvas" width="1080" height="1080" aria-label="Live preview of your cover"></canvas>
+  </section>
+</main>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>

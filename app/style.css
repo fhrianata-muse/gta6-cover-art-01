@@ -1,0 +1,74 @@
+/* Neon Coast Cover Studio: a dark neon editor shell around the cover canvas. */
+:root {
+  --ink: #0d0618;
+  --panel: #1a0f2e;
+  --panel-edge: #3a2060;
+  --text: #f6efff;
+  --muted: #b9a8d9;
+  --pink: #ff2e88;
+  --cyan: #19d3ff;
+  --gold: #ffc44d;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; }
+body {
+  background: radial-gradient(1100px 500px at 85% -10%, #43206e 0%, transparent 60%),
+    radial-gradient(900px 480px at -10% 110%, #123a5e 0%, transparent 55%), var(--ink);
+  color: var(--text);
+  font: 15px/1.45 "Segoe UI", system-ui, sans-serif;
+}
+.brand-bar { padding: 18px 28px 4px; }
+.brand-bar h1 { margin: 0; font-size: 30px; letter-spacing: 0.04em; text-transform: uppercase; }
+.brand-bar h1 span { color: var(--pink); }
+.brand-bar p { margin: 4px 0 0; color: var(--muted); max-width: 760px; }
+.studio-layout { display: flex; gap: 26px; align-items: flex-start; padding: 16px 28px 28px; }
+.controls-panel {
+  width: 320px; flex: 0 0 320px; display: flex; flex-direction: column; gap: 10px;
+  background: var(--panel); border: 1px solid var(--panel-edge); border-radius: 14px; padding: 18px;
+}
+.controls-panel h2 { margin: 10px 0 2px; font-size: 15px; text-transform: uppercase; letter-spacing: 0.09em; color: var(--gold); }
+.controls-panel label { display: flex; flex-direction: column; gap: 5px; font-weight: 600; color: var(--text); }
+.controls-panel input[type="text"], .controls-panel select {
+  font: inherit; padding: 8px 10px; border-radius: 8px; border: 1px solid var(--panel-edge);
+  background: #0f0820; color: var(--text);
+}
+.controls-panel input[type="range"] { accent-color: var(--pink); width: 100%; }
+.controls-panel button {
+  font: inherit; font-weight: 700; padding: 9px 12px; border: 0; border-radius: 8px;
+  background: #2b1850; color: var(--text); cursor: pointer;
+}
+.controls-panel button:hover { background: #3a2060; }
+.upload-label input[type="file"] { font-weight: 400; }
+.photo-strip { display: flex; flex-wrap: wrap; gap: 8px; }
+.photo-thumb {
+  display: flex; flex-direction: column; align-items: center; gap: 3px;
+  padding: 5px !important; font-size: 11px;
+}
+.photo-thumb canvas { border-radius: 6px; border: 2px solid #ffffff; }
+.photo-thumb.fill-all { justify-content: center; min-height: 96px; font-size: 12px; }
+.panel-label { margin: 0; color: var(--cyan); font-size: 13px; }
+.toggle-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 10px; }
+.toggle-grid label { flex-direction: row; align-items: center; gap: 7px; font-weight: 500; }
+.toggle-grid input { accent-color: var(--cyan); }
+.export-row { display: flex; flex-direction: column; gap: 8px; }
+.export-button { background: linear-gradient(90deg, #ff2e88, #ff7b2e) !important; color: #ffffff !important; }
+.history-row { display: flex; gap: 8px; }
+.history-row button { flex: 1; }
+#statusLine { margin: 2px 0 0; color: var(--muted); font-size: 13px; min-height: 20px; }
+.preview-panel { flex: 1; display: flex; justify-content: center; }
+#coverCanvas {
+  width: min(72vh, 58vw); height: min(72vh, 58vw);
+  border-radius: 6px; box-shadow: 0 18px 60px rgba(0, 0, 0, 0.6);
+  cursor: grab; touch-action: none; background: #12041f;
+}
+#coverCanvas:active { cursor: grabbing; }
+body.shot-cover { background: #12041f; }
+body.shot-cover .brand-bar, body.shot-cover .controls-panel { display: none; }
+body.shot-cover .studio-layout { padding: 0; }
+body.shot-cover .preview-panel { display: block; }
+body.shot-cover #coverCanvas { width: 100vw; height: 100vh; border-radius: 0; box-shadow: none; cursor: default; }
+@media (max-width: 900px) {
+  .studio-layout { flex-direction: column; }
+  .controls-panel { width: 100%; flex: none; }
+  #coverCanvas { width: min(92vw, 60vh); height: min(92vw, 60vh); }
+}
